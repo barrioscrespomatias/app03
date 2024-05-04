@@ -12,19 +12,19 @@
     plugins: {
       SplashScreen: {
         launchShowDuration: 3000,
-        launchAutoHide: true,
-        launchFadeOutDuration: 3000,
+        // launchAutoHide: true,
+        launchFadeOutDuration: 1000,
         backgroundColor: "#ffffffff",
-        androidSplashResourceName: "splash",
-        androidScaleType: "CENTER_CROP",
-        showSpinner: true,
-        androidSpinnerStyle: "large",
+        // androidSplashResourceName: "splash",
+        // androidScaleType: "CENTER_CROP",
+        showSpinner: false,
+        androidSpinnerStyle: "small",
         iosSpinnerStyle: "small",
         spinnerColor: "#999999",
         splashFullScreen: true,
         splashImmersive: true,
-        layoutName: "launch_screen",
-        useDialog: true,
+        // layoutName: "launch_screen",
+        // useDialog: true,
       },
     }
   };
