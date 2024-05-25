@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrientationListenerEvent } from '@capacitor/motion';
 import { PluginListenerHandle } from '@capacitor/core';
 import { Motion } from '@capacitor/motion';
+import { FlashlightService } from 'src/app/services/flashlight.service';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
   isPlaying: boolean = false; // Indicador para rastrear si un sonido se está reproduciendo
   activeFlash: boolean = false;
 
-  constructor() { }
+  constructor(private flashlightService: FlashlightService) { }
 
   ngOnInit() {
     this.startOrientationListener();
@@ -37,8 +38,10 @@ export class HomeComponent implements OnInit {
     if (gamma < 0) {
       this.playSound(this.left);
       // this.flashlight.switchOn();
+      this.turnOffFlashlight();
     } else {
       this.playSound(this.right);
+      this.turnOnFlashlight();
     }
   }
 
@@ -58,5 +61,29 @@ export class HomeComponent implements OnInit {
 
   toggleAlarm() {
     this.alarmActivated = !this.alarmActivated;
+  }
+
+  turnOnFlashlight() {
+    this.flashlightService.switchOn().then(() => {
+      console.log('Linterna encendida');
+    }).catch(error => {
+      console.error('Error al encender la linterna', error);
+    });
+  }
+
+  turnOffFlashlight() {
+    this.flashlightService.switchOff().then(() => {
+      console.log('Linterna apagada');
+    }).catch(error => {
+      console.error('Error al apagar la linterna', error);
+    });
+  }
+
+  toggleFlashlight() {
+    this.flashlightService.toggle().then(() => {
+      console.log('Linterna cambiada');
+    }).catch(error => {
+      console.error('Error al cambiar la linterna', error);
+    });
   }
 }
