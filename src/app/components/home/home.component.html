@@ -1,1 +1,12 @@
 <app-menu></app-menu>
+  
+  <ion-content class="ion-padding">
+    <div class="fullscreen-button">
+      <ion-button expand="block" (click)="toggleAlarm()">Activar Alarma</ion-button>
+    </div>
+    
+    <ion-item *ngIf="alarmActivated">
+      <ion-label>La alarma está activa</ion-label>
+    </ion-item>
+  </ion-content>
+  
