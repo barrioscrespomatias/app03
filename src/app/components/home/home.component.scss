@@ -1,0 +1,99 @@
+:root {
+    --primary-color: #bfebf4;
+    --secondary-color: #FD3B4A;
+  }
+  
+  ion-content {
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+  }
+  
+  .fullscreen-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .button-container, .input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .fullscreen-button {
+    width: 100%;
+    height: 100%;
+    --background: #bfebf4;
+    --background-hover: #bfebf4;
+    --background-activated: #bfebf4;
+    --background-focused: #bfebf4;
+    --color: blue;
+    --border-radius: 0;
+    --border-color: #000;
+    --border-style: solid;
+    --border-width: 1px;
+    --box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
+    --ripple-color: deeppink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .fullscreen-button.red {
+    --background: #FD3B4A;
+    --background-hover: #FD3B4A;
+    --background-activated: #FD3B4A;
+    --background-focused: #FD3B4A;
+  }
+  
+  ion-input {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  ion-modal {
+    --height: 25%;
+    --border-radius: 16px;
+    --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+  
+  ion-modal::part(backdrop) {
+    background: rgba(209, 213, 219);
+    opacity: 1;
+  }
+  
+  ion-modal ion-toolbar {
+    --background: #64A0D9;
+    --color: black;
+  }
+
+  ion-button{
+    color: #000;
+  }
+
+  ion-input {
+    --padding-start: 10px;
+    --padding-end: 10px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    --background: white;
+    --border-radius: 5px;
+  }  

@@ -1,12 +1,45 @@
-<app-menu></app-menu>
-  
-  <ion-content class="ion-padding">
-    <div class="fullscreen-button">
-      <ion-button expand="block" (click)="toggleAlarm()">Activar Alarma</ion-button>
-    </div>
-    
-    <ion-item *ngIf="alarmActivated">
-      <ion-label>La alarma está activa</ion-label>
-    </ion-item>
-  </ion-content>
-  
+<ion-header>
+  <ion-toolbar>
+    <ion-segment value="all">
+      <ion-segment-button *ngIf="!alarmActivated" (click)="navigateTo('')" value="favorites">
+        <ion-label>Cerrar sesión</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div *ngIf="!alarmActivated" class="button-container">
+    <ion-button (click)="toggleAlarm()" expand="block" class="fullscreen-button">
+      <img src="../../../assets/images/lock.png" alt="">
+    </ion-button>
+  </div>
+
+  <div class="input-container">
+    <ion-button id="open-modal" expand="block" class="fullscreen-button red">
+      <img src="../../../assets/images/unlock.png" alt="">
+    </ion-button>
+  </div>
+
+  <ion-modal #modal trigger="open-modal" (willPresent)="onModalPresent()">
+    <ng-template>
+      <ion-content>
+        <ion-toolbar>
+          <ion-title>Desbloquear</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="black" (click)="modal.dismiss()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+        <ion-item>
+          <ion-avatar slot="end">
+            <ion-img src="../../../assets/images/pass.png" (click)="disabledAlarm()"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <ion-input type="password" #passwordInput [(ngModel)]="password" placeholder="Ingrese su contraseña"></ion-input>
+          </ion-label>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

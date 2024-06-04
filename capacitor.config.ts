@@ -11,9 +11,9 @@
     },
     plugins: {
       SplashScreen: {
-        launchShowDuration: 3000,
+        launchShowDuration: 3300,
         // launchAutoHide: true,
-        launchFadeOutDuration: 1000,
+        launchFadeOutDuration: 3300,
         backgroundColor: "#ffffffff",
         // androidSplashResourceName: "splash",
         // androidScaleType: "CENTER_CROP",

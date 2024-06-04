@@ -1,14 +1,13 @@
 <body>
-  <ion-list class="blue">
-    <form [formGroup]="form">
-      <ion-grid class>
-
-        <ion-row class="ion-align-items-center">
-          <ion-col size="12" class="ion-text-center">
-            <ion-card class="blue">
-              <img alt="logo" src="../../../assets/images/3_alarma-robo_logo.png" width="200" height="200" />
+  <ion-list>
+    <form [formGroup]="form" action="javascript:void(0)" (submit)="SignIn()">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" class="ion-text-center" style="margin-top: 20px;">
+            <ion-card>
+              <img alt="logo" src="../../../assets/images/3_alarma-robo_logo.png" width="200" height="200" style="background-color: transparent;" />
               <ion-card-header>
-                <ion-card-title>Alarma anti robo</ion-card-title>
+                <ion-card-title>Alarma Anti Robo</ion-card-title>
                 <ion-card-subtitle>Iniciar sesión</ion-card-subtitle>
               </ion-card-header>
             </ion-card>
@@ -16,94 +15,82 @@
         </ion-row>
 
         <ion-row>
-          <ion-col size="12" class="input-color" style="margin-top: 5%;">
+          <ion-col size="12">
             <ion-item>
-              <ion-input class="text-input" label="Correo electrónico" formControlName="email"
-                class="input-text js-input" required></ion-input>
-              <div *ngIf="form.get('mail')?.invalid && (form.get('mail')?.dirty || form.get('mail')?.touched)">
-                <div *ngIf="form.get('mail')?.errors?.['required']" class="error-message">
-                  El campo es requerido.
-                </div>
-                <div *ngIf="form.get('mail')?.errors?.['minlength']" class="error-message">
-                  El campo debe tener al menos {{form.get('mail')?.errors?.['minlength'].requiredLength}} caracteres.
-                </div>
-                <div *ngIf="form.get('mail')?.errors?.['maxlength']" class="error-message">
-                  El campo debe tener como maximo {{form.get('mail')?.errors?.['maxlength'].requiredLength}} caracteres.
-                </div>
-              </div>
+              <ion-label position="floating">Correo electrónico</ion-label>
+              <ion-input formControlName="email" required></ion-input>
             </ion-item>
           </ion-col>
-          <ion-col size="12" style="margin-top: 5%;">
+          <ion-col size="12">
             <ion-item>
-              <ion-input label="Contraseña" type="password" formControlName="password" class="input-text js-input"
-                required></ion-input>
-
-              <div
-                *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)">
-                <div *ngIf="form.get('password')?.errors?.['required']" class="error-message">
-                  El campo es requerido.
-                </div>
-                <div *ngIf="form.get('password')?.errors?.['minlength']" class="error-message">
-                  El campo debe tener al menos {{form.get('password')?.errors?.['minlength'].requiredLength}}
-                  caracteres.
-                </div>
-                <div *ngIf="form.get('password')?.errors?.['maxlength']" class="error-message">
-                  El campo debe tener como maximo {{form.get('password')?.errors?.['maxlength'].requiredLength}}
-                  caracteres.
-                </div>
-                <span *ngIf="form.get('password')?.errors?.['pattern']">El campo solo puede contener letras y caracteres
-                  especiales.</span>
-              </div>
+              <ion-label position="floating">Contraseña</ion-label>
+              <ion-input type="password" formControlName="password" required></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
-        <!-- </ion-grid> -->
+
+        <!-- Accordion -->
+
+        <!-- <ion-accordion-group>
+          <ion-accordion value="first">
+            <ion-item slot="header">
+              <ion-label>Roles</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content" (click)="AccesoRapido('admin@admin.com','111111')">Admin</div>
+            <div class="ion-padding" slot="content" (click)="AccesoRapido('invitado@invitado.com','222222')">Usuario</div>
+            <div class="ion-padding" slot="content" (click)="AccesoRapido('usuario@usuario.com','333333')">Invitado</div>
+          </ion-accordion>
+        </ion-accordion-group> -->
+
+        <!-- Segment -->
+
+        <!-- <ion-segment [(ngModel)]="selectedRole" value="default">
+          <ion-segment-button value="admin" (click)="AccesoRapido('admin@admin.com','111111')">
+            <ion-label>Admin</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="usuario" (click)="AccesoRapido('invitado@invitado.com','222222')">
+            <ion-label>Usuario</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="invitado" (click)="AccesoRapido('usuario@usuario.com','333333')">
+            <ion-label>Invitado</ion-label>
+          </ion-segment-button>
+        </ion-segment> -->
+
+        <!-- Toggle -->
+
+        <!-- <ion-list>
+          <ion-item>
+            <ion-select aria-label="roles" placeholder="Roles" (ionChange)="onRoleChange($event)" [(ngModel)]="selectedRole">
+              <ion-select-option value="admin">Admin</ion-select-option>
+              <ion-select-option value="invitado">Invitado</ion-select-option>
+              <ion-select-option value="usuario">Usuario</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list> -->
+
+        
+      <!-- Esto se puede usar como slider para iniciar sesion (simulando ser un boton) -->
+      <!-- <ion-range aria-label="Range with ionChange" (ionChange)="onIonChange($event)"></ion-range> -->
 
 
-        <!-- <ion-grid> -->
-
-        <!-- </ion-grid> -->
-
-        <!-- <ion-grid> -->
-        <!-- <ion-row class="ion-align-items-center">
+      <ion-list class="toggle-list">
+        <ion-item>
+          <ion-toggle #adminToggle aria-label="Admin" (ionChange)="onToggleChange($event, 'admin@admin.com', '111111')">Admin</ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-toggle #usuarioToggle aria-label="Usuario" (ionChange)="onToggleChange($event, 'usuario@usuario.com', '333333')">Usuario</ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-toggle #invitadoToggle aria-label="Invitado" (ionChange)="onToggleChange($event, 'invitado@invitado.com', '222222')">Invitado</ion-toggle>
+        </ion-item>
+      </ion-list>
+        
+        <ion-row>
           <ion-col size="12" class="ion-text-center">
-            <ion-button type="submit" color="success" expand="block" (click)="SignUp()">Registrarse</ion-button>
-          </ion-col>
-        </ion-row> -->
-
-        <ion-row class="ion-align-items-center" style="margin-top: 10%;">
-          <ion-col size="4" class="ion-text-center">
-            <span>ADMIN</span>
-          </ion-col>
-          <ion-col size="4" class="ion-text-center">
-            <span>INVITADO</span>
-          </ion-col>
-          <ion-col size="4" class="ion-text-center">
-            <span>USUARIO</span>
-          </ion-col>
-
-          <ion-col size="4" class="ion-text-center">
-            <img src="../../../assets/images/user.png" alt="Cinque Terre" height="100"
-              (click)="AccesoRapido('admin@admin.com','111111')">
-          </ion-col>
-          <ion-col size="4" class="ion-text-center">
-            <img src="../../../assets/images/user.png" alt="Cinque Terre" height="100"
-              (click)="AccesoRapido('invitado@invitado.com','222222')">
-          </ion-col>
-          <ion-col size="4" class="ion-text-center">
-            <img src="../../../assets/images/user.png" alt="Cinque Terre" height="100"
-              (click)="AccesoRapido('usuario@usuario.com','333333')">
-          </ion-col>
-        </ion-row>
-
-        <ion-row class="ion-align-items-center">
-          <ion-col size="12" class="ion-text-center">
-            <ion-button type="submit" color="primary" size="large" expand="block"
-              (click)="SignIn()">Ingresar</ion-button>
+            <ion-button type="submit" color="primary" expand="block">Ingresar</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
     </form>
   </ion-list>
-
 </body>

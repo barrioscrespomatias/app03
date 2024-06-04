@@ -15,6 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [AppComponent, MenuComponent, LoginComponent, HomeComponent, ToastComponent],
   imports: [

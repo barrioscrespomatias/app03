@@ -12,7 +12,8 @@ export class MenuComponent  implements OnInit {
 
   ngOnInit() {}
 
-  SignOut() {
-    this.angularFireService.SignOut();
+  async SignOut() {
+    alert("entro aca")
+    await this.angularFireService.SignOut();
   }
 }
